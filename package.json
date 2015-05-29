@@ -1,0 +1,28 @@
+{
+  "name": "crowly",
+  "version": "0.1.0",
+  "description": "web crawler to build sitemap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/foysalit/casper-crowly"
+  },
+  "keywords": [
+    "casper.js",
+    "crawler",
+    "sitemap"
+  ],
+  "author": "Foysal Ahamed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/foysalit/casper-crowly/issues"
+  },
+  "homepage": "https://github.com/foysalit/casper-crowly",
+  "dependencies": {
+    "casperjs": "^1.1.0-beta3",
+    "lodash": "^3.9.3"
+  }
+}
