@@ -45,8 +45,6 @@ function crawl(url) {
         this.open(url);
     	checked.push(url);
     });
-    
-    // this.wait(10000);
 
     // this.then(function(res) {
         // helpers.sendImageToOctopus(this);
@@ -120,7 +118,8 @@ if (!url) {
 casper.on('resource.received', function(resource) {
     var currentPage = sitemap[links[currentLink-1]],
         isDataUri = resource.url.indexOf('data:') === 0,
-        staticContentMatcher = new RegExp("javascript|css|image|video", "i"),
+        allowedContentTypes = ["javascript", "css", "image", "video"],
+        staticContentMatcher = new RegExp(allowedContentTypes.join("|"), "i"),
         isStaticContent = staticContentMatcher.exec(resource.contentType),
         alreadyIndexed = _.contains(currentPage, resource.url);
 
