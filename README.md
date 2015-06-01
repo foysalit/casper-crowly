@@ -11,16 +11,16 @@ OR run it with locally installed casperjs using the following -
 an additional option `--max-depth` can be passed to the command to set how many pages you want to crawl.
 
 ### Tools
-There are lots of tools out there to write a simple crawler/sitemap generator but most of the tools don't work very well when the sites are javascript heavy and the contents are filled in with javascript after page load. Which is the main reason I chose a [Casper.js](http://casperjs.org) for the task. It's a node.js based headless browser and I have used it for many projects before and quite comfortable in it. It uses phantom.js at it's core and provides a nice layer of utility toolset and api to work with.
+There are lots of tools out there to write a simple crawler/sitemap generator but most of the tools don't work very well when the sites are javascript heavy and the contents are filled in with javascript after page load. Which is the main reason why I chose a [Casper.js](http://casperjs.org) for the task. It's a node.js based headless browser and I have used it for many projects before and I am quite comfortable in it. It uses phantom.js at it's core and provides a nice layer of utility toolset and api to work with.
 
 The crawler uses lodash as a utility tool and fs module (provided by phantom.js *NOT* the default node.js fs module) to write the generated sitemap with all the static assets per page as json in a file.
 
 For debugging visually I used [this tool](https://github.com/maciejjankowski/flaming-octo-puss) which I have contributed to as well.
 
 ### How does it work?
-The crawler starts by loading the entry page defined by the command and builds scrapes the links found on the page and iterates the process for each link.
+The crawler starts by loading the entry page defined by the command and scrapes the links found on the page and then iterates the process for each link.
 
-For each page crawled, it builds an array of all the static resources loaded on that page and stores it in an object where the key is the page url. The storage structure enables the tool to easily pretty print the object as a JSON string into a file.
+For each page crawled, it builds an array of all the static resources loaded on that page and stores it in an object where the key is the page url. The object structure enables the tool to easily pretty print the object as a JSON string into a file.
 
 The files are stored inside the `sitename/` folder and the filenames are nothing but a unix timestamp.
 
@@ -31,7 +31,7 @@ The files are stored inside the `sitename/` folder and the filenames are nothing
 
 3. Casper.js provides some great options for debugging but even those can fall short in some cases. Which is why I found it extremely helpful to visually see what goes on during the crawling. Which is where the `flaming-octo-puss` repo comes in very handy.
 
-4. I tried to implement the parsing of relative urls but it seemed to become more and more complex as I moved forward so I decided to use a piece of code that is already written and tested.
+4. I tried to implement the parsing of relative urls at first but it seemed to become more and more complex as I moved forward so I decided to use a piece of code that is already written and tested.
 
 5. A lot of console.log()s and some other code are commented out and I left them that way since it might help you understand how I made progress through the codebase.
 
